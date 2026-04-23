@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File (conda env)",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "python": "C:/Users/sims3007/AppData/Local/anaconda3/envs/env/python.exe",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Debug main.py (conda env)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "python": "C:/Users/sims3007/AppData/Local/anaconda3/envs/env/python.exe",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {},
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
