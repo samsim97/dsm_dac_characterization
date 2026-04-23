@@ -142,24 +142,41 @@ def measure_code(code):
         "n": len(values)
     }
 
+def set_dac_input_code(current_code: int, input_code: int):
+    """Set the DAC input code by incrementing the current code to the specified value."""
+    if input_code < current_code:
+        raise ValueError("Current code can only be incremented to reach the target code.")
+    
+    iterations_count = input_code - current_code
+    for _ in range(iterations_count):
+        rp.pin_write(1, 'N', 1)
+        time.sleep(0.0005)
+        rp.pin_write(1, 'N', 0)
+        time.sleep(0.0005)
+
+
 # ---------------- MAIN LOOP ----------------
 
 def main():
     codes = generate_test_codes()
-    print(codes)
-    return
+    # print(codes)
+    # return
 
     results = []
 
     start = time.time()
+
+    current_code = min(codes)
 
     for i, code in enumerate(codes):
 
         print(f"[{i+1}/{len(codes)}] Measuring code {code}")
 
         try:
+            set_dac_input_code(current_code, code)
             res = measure_code(code)
             results.append(res)
+            current_code = code
 
         except Exception as e:
             print(f"Error at code {code}: {e}")
