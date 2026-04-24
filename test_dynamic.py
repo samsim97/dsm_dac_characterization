@@ -158,7 +158,7 @@ def set_dac_input_code(current_code: int, input_code: int):
 # ---------------- MAIN LOOP ----------------
 
 def main():
-    codes = generate_test_codes()
+    codes = sorted(generate_test_codes())
     # print(codes)
     # return
 
